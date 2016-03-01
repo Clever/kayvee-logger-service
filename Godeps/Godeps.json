@@ -1,0 +1,89 @@
+{
+	"ImportPath": "github.com/Clever/kayvee-logger-service",
+	"GoVersion": "go1.5",
+	"Packages": [
+		"github.com/Clever/kayvee-logger-service/cmd/kayvee-logger-service-server"
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/PuerkitoBio/purell",
+			"Comment": "v0.1.0-23-gd69616f",
+			"Rev": "d69616f51cdfcd7514d6a380847a152dfc2a749d"
+		},
+		{
+			"ImportPath": "github.com/asaskevich/govalidator",
+			"Comment": "v2-51-g9699ab6",
+			"Rev": "9699ab6b38bee2e02cd3fe8b99ecf67665395c96"
+		},
+		{
+			"ImportPath": "github.com/go-swagger/go-swagger/errors",
+			"Comment": "0.4.0-29-g4fc282a",
+			"Rev": "4fc282a149e998dbe8703bd2e2643d14c7d71c0f"
+		},
+		{
+			"ImportPath": "github.com/go-swagger/go-swagger/httpkit",
+			"Comment": "0.4.0-29-g4fc282a",
+			"Rev": "4fc282a149e998dbe8703bd2e2643d14c7d71c0f"
+		},
+		{
+			"ImportPath": "github.com/go-swagger/go-swagger/internal/validate",
+			"Comment": "0.4.0-29-g4fc282a",
+			"Rev": "4fc282a149e998dbe8703bd2e2643d14c7d71c0f"
+		},
+		{
+			"ImportPath": "github.com/go-swagger/go-swagger/jsonpointer",
+			"Comment": "0.4.0-29-g4fc282a",
+			"Rev": "4fc282a149e998dbe8703bd2e2643d14c7d71c0f"
+		},
+		{
+			"ImportPath": "github.com/go-swagger/go-swagger/jsonreference",
+			"Comment": "0.4.0-29-g4fc282a",
+			"Rev": "4fc282a149e998dbe8703bd2e2643d14c7d71c0f"
+		},
+		{
+			"ImportPath": "github.com/go-swagger/go-swagger/spec",
+			"Comment": "0.4.0-29-g4fc282a",
+			"Rev": "4fc282a149e998dbe8703bd2e2643d14c7d71c0f"
+		},
+		{
+			"ImportPath": "github.com/go-swagger/go-swagger/strfmt",
+			"Comment": "0.4.0-29-g4fc282a",
+			"Rev": "4fc282a149e998dbe8703bd2e2643d14c7d71c0f"
+		},
+		{
+			"ImportPath": "github.com/go-swagger/go-swagger/swag",
+			"Comment": "0.4.0-29-g4fc282a",
+			"Rev": "4fc282a149e998dbe8703bd2e2643d14c7d71c0f"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Rev": "1c83b3eabd45b6d76072b66b746c20815fb2872d"
+		},
+		{
+			"ImportPath": "github.com/jessevdk/go-flags",
+			"Comment": "v1-334-g6b9493b",
+			"Rev": "6b9493b3cb60367edd942144879646604089e3f7"
+		},
+		{
+			"ImportPath": "github.com/naoina/denco",
+			"Rev": "9af2ba0e24214bac003821f4a501b131b2e04c75"
+		},
+		{
+			"ImportPath": "github.com/opennota/urlesc",
+			"Rev": "5fa9ff0392746aeae1c4b37fcc42c65afa7a9587"
+		},
+		{
+			"ImportPath": "github.com/tylerb/graceful",
+			"Comment": "v1.2.4-2-g7116c7a",
+			"Rev": "7116c7a8115899e80197cd9e0b97998c0f97ed8e"
+		},
+		{
+			"ImportPath": "golang.org/x/net/netutil",
+			"Rev": "1b27761f1cd4840a914b5255e4357385091562e5"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v2",
+			"Rev": "f7716cbe52baa25d2e9b0d0da546fcf909fc16b4"
+		}
+	]
+}
