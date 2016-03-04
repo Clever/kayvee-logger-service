@@ -48,7 +48,7 @@ func TestLogHandlerBlocksEventsWithMissingFields(t *testing.T) {
 	output := &bytes.Buffer{}
 	handler := NewLogHandler(output)
 
-	responder = handler.Handle(operations.LogParams{Event: `{"source":"app1", "title":"event3"}`})
+	responder := handler.Handle(operations.LogParams{Event: `{"source":"app1", "title":"event3"}`})
 
 	assert.Equal(t, operations.NewLogBadRequest(), responder)
 	assert.Equal(t, "", string(output.Bytes()))
