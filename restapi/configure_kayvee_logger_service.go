@@ -2,11 +2,13 @@ package restapi
 
 import (
 	"net/http"
+	"os"
 
 	errors "github.com/go-swagger/go-swagger/errors"
 	httpkit "github.com/go-swagger/go-swagger/httpkit"
 	middleware "github.com/go-swagger/go-swagger/httpkit/middleware"
 
+	"github.com/Clever/kayvee-logger-service/handlers"
 	"github.com/Clever/kayvee-logger-service/restapi/operations"
 )
 
@@ -20,11 +22,9 @@ func configureAPI(api *operations.KayveeLoggerServiceAPI) http.Handler {
 
 	api.JSONProducer = httpkit.JSONProducer()
 
-	api.LogHandler = operations.LogHandlerFunc(func(params operations.LogParams) middleware.Responder {
-		return middleware.NotImplemented("operation .Log has not yet been implemented")
-	})
+	api.LogHandler = handlers.NewLogHandler(os.Stderr)
 	api.PingHandler = operations.PingHandlerFunc(func() middleware.Responder {
-		return middleware.NotImplemented("operation .Ping has not yet been implemented")
+		return operations.NewPingOK()
 	})
 
 	api.ServerShutdown = func() {}

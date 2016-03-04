@@ -2,7 +2,8 @@
 	"ImportPath": "github.com/Clever/kayvee-logger-service",
 	"GoVersion": "go1.5",
 	"Packages": [
-		"github.com/Clever/kayvee-logger-service/cmd/kayvee-logger-service-server"
+		"github.com/Clever/kayvee-logger-service/cmd/kayvee-logger-service-server",
+		"github.com/Clever/kayvee-logger-service/impl"
 	],
 	"Deps": [
 		{
@@ -14,6 +15,10 @@
 			"ImportPath": "github.com/asaskevich/govalidator",
 			"Comment": "v2-51-g9699ab6",
 			"Rev": "9699ab6b38bee2e02cd3fe8b99ecf67665395c96"
+		},
+		{
+			"ImportPath": "github.com/getsentry/raven-go",
+			"Rev": "d25a363f644decca10856d923980d10555f473e9"
 		},
 		{
 			"ImportPath": "github.com/go-swagger/go-swagger/errors",
@@ -73,6 +78,16 @@
 			"Rev": "5fa9ff0392746aeae1c4b37fcc42c65afa7a9587"
 		},
 		{
+			"ImportPath": "github.com/stretchr/testify/assert",
+			"Comment": "v1.0-21-gf552045",
+			"Rev": "f5520455607c0233cb6d7b056f71b22c1d265ef1"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/require",
+			"Comment": "v1.0-21-gf552045",
+			"Rev": "f5520455607c0233cb6d7b056f71b22c1d265ef1"
+		},
+		{
 			"ImportPath": "github.com/tylerb/graceful",
 			"Comment": "v1.2.4-2-g7116c7a",
 			"Rev": "7116c7a8115899e80197cd9e0b97998c0f97ed8e"
@@ -80,6 +95,11 @@
 		{
 			"ImportPath": "golang.org/x/net/netutil",
 			"Rev": "1b27761f1cd4840a914b5255e4357385091562e5"
+		},
+		{
+			"ImportPath": "gopkg.in/Clever/kayvee-go.v2",
+			"Comment": "v2.4.0",
+			"Rev": "f22678e173a41725762e243290eca4dd3939b33b"
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v2",
