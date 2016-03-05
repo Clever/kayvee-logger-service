@@ -1,6 +1,7 @@
 include golang.mk
 .DEFAULT_GOAL := test # override default goal set in library makefile
 
+.PHONY: clean all gen-server build test $(PKGS) vendor run
 SHELL := /bin/bash
 PKG := github.com/Clever/kayvee-logger-service
 PKGS := $(shell go list ./... | grep -v /vendor | grep -v /restapi)
