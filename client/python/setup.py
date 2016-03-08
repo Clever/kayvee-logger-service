@@ -22,6 +22,9 @@ if pkg_resources.get_distribution("pip").version >= '6.0':
 
 install_reqs = parse_requirements(os.path.join(here, reqs), **pr_kwargs)
 
+with open(os.path.join(here, './dependency-links.txt')) as f:
+  dep_links = f.read().splitlines()
+
 setup(
     name=NAME,
     version=VERSION,
@@ -29,7 +32,8 @@ setup(
     author_email="tech-notify@getclever.com",
     url="https://github.com/Clever/kayvee-logger-service",
     keywords=["Swagger", "Kayvee Logger Service"],
-    install_requires=[str(ir.req) for ir in install_reqs],
+    install_requires=[str(ir.req) for ir in install_reqs if ir.req is not None],
+    dependency_links=[dep.strip() for dep in dep_links if dep],
     packages=find_packages(),
     long_description="""\
     Logs kayvee events.

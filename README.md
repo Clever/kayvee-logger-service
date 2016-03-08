@@ -9,18 +9,54 @@ A service for recording client-side events and errors via the Clever logging pip
 
 #### Installation:
 
-The auto-generated Python clinet can be installed via pip.
+##### pip
 
-Add the following to your requirements.txt file:
+```sh
+pip install git+https://<clever-drone Github token>@github.com/Clever/kayvee-logger-service.git@<version_tag>#egg=kayvee-logger-service&subdirectory=client/python
 ```
-git+https://<clever-drone Github token>@github.com/Clever/kayvee-logger-service.git@<version_tag>#egg=kayvee-logger-service&subdirectory=client/python
+
+The Github token can be found in [dev-passwords](https://github.com/Clever/clever-ops/tree/master/credentials).
+
+##### setup.py
+
+```python
+from setuptools import setup
+
+# Assuming kayvee-logger-service v1.0.0 is being installed:
+setup(
+
+    # ...
+
+    install_requires=['kayvee-logger-service==1.0.0'],
+    dependency_links=[
+      'https://<clever-drone Github token>@github.com/Clever/kayvee-logger-service/tarball/v1.0.0#egg=kayvee-logger-service-1.0.0&subdirectory=client/python'
+    ],
+
+    # ...
+
+)
 ```
 
 The Github token can be found in [dev-passwords](https://github.com/Clever/clever-ops/tree/master/credentials).
 
 #### Usage:
 
-TODO
+```python
+import kayvee_logger_service.output as kv_output
+import logger
+
+kv_logger = logger.Logger("kayvee-logger-service-test", output=kv_output.Output())
+kv_logger.info("sample-log-title", dict(msg="This will get logged to the kayvee-logger-service."))
+```
+
+#### Environment Variables:
+
+The following environment variables are required to enable `kayvee-logger-service` discovery:
+
+```
+SERVICE_KAYVEE_LOGGER_SERVICE_HTTP_HOST
+SERVICE_KAYVEE_LOGGER_SERVICE_HTTP_PORT
+```
 
 ## Development
 

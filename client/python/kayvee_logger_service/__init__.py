@@ -10,4 +10,6 @@ from .api_client import ApiClient
 
 from .configuration import Configuration
 
+from .output import Output
+
 configuration = Configuration()

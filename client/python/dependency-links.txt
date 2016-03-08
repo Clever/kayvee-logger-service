@@ -1,0 +1,1 @@
+https://ee5497304fd194fc4d3616283d55abe1e80e6db6@github.com/Clever/discovery-python/tarball/v0.1.0#egg=discovery-0.1.0
