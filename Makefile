@@ -16,6 +16,7 @@ build:
 
 clean:
 	rm bin/*
+	find -type f -name '*.pyc' -delete
 
 codegen: gen-server gen-client
 
@@ -28,7 +29,7 @@ gen-server:
 	swagger generate server -f kayvee-logger-service.yaml
 
 py-deps:
-	python client/python/setup.py develop
+	python setup.py develop
 
 py-test: py-deps
 	nosetests client/python/test

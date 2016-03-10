@@ -12,7 +12,7 @@ A service for recording client-side events and errors via the Clever logging pip
 ##### pip
 
 ```sh
-pip install git+https://<clever-drone Github token>@github.com/Clever/kayvee-logger-service.git@<version_tag>#egg=kayvee-logger-service&subdirectory=client/python
+pip install git+https://<clever-drone Github token>@github.com/Clever/kayvee-logger-service.git@<version_tag>#egg=kayvee-logger-service
 ```
 
 The Github token can be found in [dev-passwords](https://github.com/Clever/clever-ops/tree/master/credentials).
@@ -29,7 +29,7 @@ setup(
 
     install_requires=['kayvee-logger-service==1.0.0'],
     dependency_links=[
-      'https://<clever-drone Github token>@github.com/Clever/kayvee-logger-service/tarball/v1.0.0#egg=kayvee-logger-service-1.0.0&subdirectory=client/python'
+      'https://<clever-drone Github token>@github.com/Clever/kayvee-logger-service/tarball/v1.0.0#egg=kayvee-logger-service-1.0.0'
     ],
 
     # ...
