@@ -1,0 +1,25 @@
+run:
+  type: docker
+resources:
+  cpu: 0.1
+  mem: 0.25
+env:
+  - HOST
+  - PORT
+expose:
+  - name: http
+    port: 80
+    bind: 80
+    health_check:
+      type: http
+      path: /ping
+elbs:
+  production:
+    - kayvee-logger-service
+  staging:
+    - kayvee-logger-service-staging
+shepherds:
+  - kofi@clever.com
+  - xavi@clever.com
+team:
+  - eng-infra
