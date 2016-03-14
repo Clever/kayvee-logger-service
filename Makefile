@@ -1,7 +1,7 @@
 include golang.mk
 .DEFAULT_GOAL := test # override default goal set in library makefile
 
-.PHONY: $(PKGS) all build clean codegen gen-client gen-client-python gen-server run test vendor
+.PHONY: $(PKGS) all build clean codegen gen-client gen-client-python gen-server py-deps py-test run test vendor
 SHELL := /bin/bash
 PKG := github.com/Clever/kayvee-logger-service
 PKGS := $(shell go list ./... | grep -v /vendor | grep -v /restapi)
@@ -16,6 +16,7 @@ build:
 
 clean:
 	rm bin/*
+	find -type f -name '*.pyc' -delete
 
 codegen: gen-server gen-client
 
@@ -28,12 +29,15 @@ gen-server:
 	swagger generate server -f kayvee-logger-service.yaml
 
 py-deps:
-	python client/python/setup.py develop
+	python setup.py develop
+
+py-test: py-deps
+	nosetests client/python/test
 
 run:
 	./bin/$(EXECUTABLE) --port=5020
 
-test: $(PKGS)
+test: $(PKGS) py-test
 
 $(PKGS): golang-test-all-deps
 	$(call golang-test-all,$@)
