@@ -1,3 +1,5 @@
+env:
+  - GITHUB_API_TOKEN=$$github_token
 image: clever/drone-go:1.5
 notify:
   email:

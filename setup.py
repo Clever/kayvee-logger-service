@@ -10,6 +10,8 @@ from setuptools import setup, find_packages
 NAME = "kayvee_logger_service"
 VERSION = "1.0.0"
 
+GITHUB_TOKEN = os.environ['GITHUB_API_TOKEN']
+
 here = os.path.abspath(os.path.dirname(__file__))
 
 reqs = 'client/python/requirements.txt'
@@ -22,9 +24,6 @@ if pkg_resources.get_distribution("pip").version >= '6.0':
 
 install_reqs = parse_requirements(os.path.join(here, reqs), **pr_kwargs)
 
-with open(os.path.join(here, 'client/python/dependency-links.txt')) as f:
-  dep_links = f.read().splitlines()
-
 setup(
     name=NAME,
     version=VERSION,
@@ -33,7 +32,10 @@ setup(
     url="https://github.com/Clever/kayvee-logger-service",
     keywords=["Swagger", "Kayvee Logger Service"],
     install_requires=[str(ir.req) for ir in install_reqs if ir.req is not None],
-    dependency_links=[dep.strip() for dep in dep_links if dep],
+    dependency_links=[
+        'https://{}@github.com/Clever/discovery-python/tarball/v0.1.0#egg=discovery-0.1.0'.format(
+            GITHUB_TOKEN)
+    ],
     packages=find_packages('client/python', exclude=['test']),
     package_dir={'': 'client/python'},
     long_description="""\
