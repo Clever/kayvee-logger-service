@@ -14,15 +14,13 @@ A service for recording client-side events and errors via the Clever logging pip
 Assuming kayvee-logger-service v1.0.0 is being installed:
 
 ```sh
-pip install git+ssh://@github.com/Clever/kayvee-logger-service.git@v1.0.0#egg=kayvee-logger-service
+pip install git+https://github.com/Clever/kayvee-logger-service.git@v1.0.0
 ```
 
 ##### setup.py
 
 ```python
 from setuptools import setup
-
-GITHUB_TOKEN = os.environ['GITHUB_API_TOKEN']
 
 # Assuming kayvee-logger-service v1.0.0 is being installed:
 setup(
@@ -31,7 +29,7 @@ setup(
 
     install_requires=['kayvee-logger-service==1.0.0'],
     dependency_links=[
-      'https://{}@github.com/Clever/kayvee-logger-service/tarball/v1.0.0#egg=kayvee-logger-service-1.0.0'.format(GITHUB_TOKEN)
+      'https://github.com/Clever/kayvee-logger-service/tarball/v1.0.0#egg=kayvee-logger-service-1.0.0'
     ],
 
     # ...
