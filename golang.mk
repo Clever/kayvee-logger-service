@@ -1,7 +1,12 @@
 # This is the default Clever Golang Makefile.
 # Please do not alter this file directly.
+GOLANG_MK_VERSION := 0.1.3
+
 SHELL := /bin/bash
 .PHONY: golang-godep-vendor golang-test-deps $(GODEP)
+
+# if the gopath includes several directories, use only the first
+GOPATH=$(shell echo $$GOPATH | cut -d: -f1)
 
 # This block checks and confirms that the proper Go toolchain version is installed.
 # arg1: golang version
@@ -61,7 +66,7 @@ golang-lint-deps: $(GOLINT)
 # arg1: pkg path
 define golang-lint
 @echo "LINTING $(1)..."
-@$(GOLINT) $(GOPATH)/src/$(1)/*.go
+@find $(GOPATH)/src/$(1)/*.go -type f | grep -v gen_ | xargs $(GOLINT)
 endef
 
 # golang-lint-deps-strict requires the golint tool for golang linting.
@@ -72,7 +77,7 @@ golang-lint-deps-strict: $(GOLINT) $(FGT)
 # arg1: pkg path
 define golang-lint-strict
 @echo "LINTING $(1)..."
-@$(FGT) $(GOLINT) $(GOPATH)/src/$(1)/*.go
+@find $(GOPATH)/src/$(1)/*.go -type f | grep -v gen_ | xargs $(FGT) $(GOLINT)
 endef
 
 # golang-test-deps is here for consistency
@@ -83,6 +88,16 @@ golang-test-deps:
 define golang-test
 @echo "TESTING $(1)..."
 @go test -v $(1)
+endef
+
+# golang-test-strict-deps is here for consistency
+golang-test-strict-deps:
+
+# golang-test-strict uses the Go toolchain to run all tests in the pkg with the race flag
+# arg1: pkg path
+define golang-test-strict
+@echo "TESTING $(1)..."
+@go test -v -race $(1)
 endef
 
 # golang-vet-deps is here for consistency
@@ -107,8 +122,8 @@ $(call golang-vet,$(1))
 $(call golang-test,$(1))
 endef
 
-# golang-test-all-deps-strict: installs all dependencies needed for different test cases.
-golang-test-all-deps-strict: golang-fmt-deps golang-lint-deps-strict golang-test-deps golang-vet-deps
+# golang-test-all-strict-deps: installs all dependencies needed for different test cases.
+golang-test-all-strict-deps: golang-fmt-deps golang-lint-deps-strict golang-test-strict-deps golang-vet-deps
 
 # golang-test-all-strict calls fmt, lint, vet and test on the specified pkg with strict
 # requirements that no errors are thrown while linting.
@@ -117,5 +132,10 @@ define golang-test-all-strict
 $(call golang-fmt,$(1))
 $(call golang-lint-strict,$(1))
 $(call golang-vet,$(1))
-$(call golang-test,$(1))
+$(call golang-test-strict,$(1))
 endef
+
+# golang-update-makefile downloads latest version of golang.mk
+golang-update-makefile:
+	@wget https://raw.githubusercontent.com/Clever/dev-handbook/master/make/golang.mk -O /tmp/golang.mk 2>/dev/null
+	@if ! grep -q $(GOLANG_MK_VERSION) /tmp/golang.mk; then cp /tmp/golang.mk golang.mk && echo "golang.mk updated"; else echo "golang.mk is up-to-date"; fi
