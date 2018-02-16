@@ -22,10 +22,6 @@
 
 
 [[constraint]]
-  name = "github.com/Clever/kayvee-logger-service"
-  version = "1.0.0"
-
-[[constraint]]
   name = "github.com/go-swagger/go-swagger"
 
 [[constraint]]

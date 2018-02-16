@@ -2,12 +2,6 @@
 
 
 [[projects]]
-  name = "github.com/Clever/kayvee-logger-service"
-  packages = ["handlers","restapi","restapi/operations"]
-  revision = "b27ea7dbcbbdc05b65c947fe7f3d6f294e5b9d26"
-  version = "v1.0.0"
-
-[[projects]]
   name = "github.com/PuerkitoBio/purell"
   packages = ["."]
   revision = "d69616f51cdfcd7514d6a380847a152dfc2a749d"
@@ -76,6 +70,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "8bc73aa22bf1e0b1f5702ee7712d9758699077057fe2d8c9d9c75de5e104488f"
+  inputs-digest = "afcf88cf3d64ca264d1e50b5570a02ddd83d4ce44024e146df2f4943a24307e0"
   solver-name = "gps-cdcl"
   solver-version = 1
