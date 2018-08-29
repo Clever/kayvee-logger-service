@@ -5,6 +5,7 @@ import pkg_resources
 import sys
 
 from pip.req import parse_requirements
+
 from setuptools import setup, find_packages
 
 NAME = "kayvee_logger_service"

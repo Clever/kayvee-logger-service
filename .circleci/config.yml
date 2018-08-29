@@ -16,15 +16,23 @@ jobs:
     - run:
         command: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
         name: Set up CircleCI artifacts directories
-    - run: make install_deps
-    - run: make build
-    - run: make test
-    - run: $HOME/ci-scripts/circleci/report-card $RC_DOCKER_USER $RC_DOCKER_PASS "$RC_DOCKER_EMAIL" $RC_GITHUB_TOKEN
     - run:
+        name: install pip
         command: |-
           rm -rf ~/.local
           cd /tmp/ && wget https://bootstrap.pypa.io/get-pip.py && sudo python get-pip.py
           sudo apt-get update
+          sudo pip install --force-reinstall pip==9.0.3
+    - run: make install_deps
+    - run: make build
+    - run:
+        name: make test
+        command: |-
+          sudo apt-get install --reinstall python-pkg-resources
+          make test
+    - run: $HOME/ci-scripts/circleci/report-card $RC_DOCKER_USER $RC_DOCKER_PASS "$RC_DOCKER_EMAIL" $RC_GITHUB_TOKEN
+    - run:
+        command: |-
           sudo apt-get install python-dev
           sudo pip install --upgrade awscli
           aws --version
