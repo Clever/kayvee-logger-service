@@ -32,7 +32,7 @@ gen-server:
 	swagger generate server -f kayvee-logger-service.yaml
 
 py-deps:
-	python setup.py develop
+	sudo python setup.py develop
 
 py-test: py-deps
 	nosetests client/python/test
