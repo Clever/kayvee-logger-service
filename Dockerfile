@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 
 COPY bin/kayvee-logger-service /usr/bin/kayvee-logger-service
 
