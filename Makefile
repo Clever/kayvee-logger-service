@@ -7,7 +7,7 @@ PKG := github.com/Clever/kayvee-logger-service
 PKGS := $(shell go list ./... | grep -v /vendor | grep -v /restapi)
 EXECUTABLE := $(shell basename $(PKG))
 
-$(eval $(call golang-version-check,1.10))
+$(eval $(call golang-version-check,1.12))
 
 all: codegen build test
 
