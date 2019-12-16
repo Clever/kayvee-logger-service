@@ -9,7 +9,6 @@ env:
 expose:
 - name: http
   port: 80
-  bind: 80
   load_balancer_port: 80
   load_balancer_proto: http
   health_check:
