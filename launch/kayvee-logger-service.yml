@@ -4,23 +4,43 @@ resources:
   cpu: 0.1
   mem: 0.25
 env:
-  - PORT
-  - HOST
+- PORT
+- HOST
 expose:
-  - name: http
-    port: 80
-    bind: 80
-    load_balancer_port: 80
-    load_balancer_proto: http
-    health_check:
-      type: http
-      path: /ping
+- name: http
+  port: 80
+  bind: 80
+  load_balancer_port: 80
+  load_balancer_proto: http
+  health_check:
+    type: http
+    path: /ping
 elbs:
   production:
-    - kayvee-logger-service
+  - kayvee-logger-service
   staging:
-    - kayvee-logger-service-staging
+  - kayvee-logger-service-staging
 shepherds:
-  - kofi@clever.com
-  - xavi@clever.com
+- kofi@clever.com
+- xavi@clever.com
 team: eng-infra
+alarms:
+- type: InternalErrorAlarm
+  severity: minor
+  # channel: this will go to the channel that this team has configured in catapult for minor alarms
+  parameters:
+    threshold: 0.01
+  extraParameters:
+    source: Target
+- type: InternalErrorAlarm
+  severity: major
+  # channel: this will go to the channel that this team has configured in catapult for major alarms
+  parameters:
+    threshold: 0.05
+  extraParameters:
+    source: Target
+- type: InternalErrorAlarm
+  severity: major
+  # channel: this will go to the channel that this team has configured in catapult for major alarms
+  parameters:
+    threshold: 0.01
